@@ -42,3 +42,12 @@ company.listEmployees();
 Company.prototype.calculateTotalPayroll = function() {
 return this.employees.reduce((total, emp) => total + (emp.salary * 12 + (emp instanceof Manager ? emp.calculateBonus() : 0)), 0);};
 console.log(company.calculateTotalPayroll()); // Expected output: 165600 
+
+// Task 5: Implementing Promotions //
+Company.prototype.promoteToManager = function(employee, teamSize) {
+const index = this.employees.indexOf(employee);
+if (index !== -1) 
+{this.employees[index] = new Manager(employee.name, employee.id, employee.department, employee.salary, teamSize);}};
+company.promoteToManager(emp1, 3);
+company.listEmployees();
+// Expected output: "Manager: Alice Johnson, ID: 201, Department: Sales, Salary: $8000, Team Size: 5" 
