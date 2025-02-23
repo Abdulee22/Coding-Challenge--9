@@ -37,4 +37,8 @@ company.listEmployees();
 // Expected output:
 // "Employee: Alice Johnson, ID: 101, Department: Sales, Salary: $5000"
 // "Manager: John Smith, ID: 201, Department: IT, Salary: $8000, Team Size: 5"
-    
+
+// Task 4: Implementing a Payroll System //
+Company.prototype.calculateTotalPayroll = function() {
+return this.employees.reduce((total, emp) => total + (emp.salary * 12 + (emp instanceof Manager ? emp.calculateBonus() : 0)), 0);};
+console.log(company.calculateTotalPayroll()); // Expected output: 165600 
